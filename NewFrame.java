@@ -43,6 +43,7 @@ public class NewFrame extends JFrame {
     JMenuBar mb;                // The menubar.
     JButton jButton1;
     JButton jButton2;
+
     //////////////////////////////////////////////////////////////////////////////////
 
     JTextField text;
@@ -61,10 +62,10 @@ public class NewFrame extends JFrame {
     LinkedList<Song> Playlist = new LinkedList<Song>();
     DefaultListModel listModel = new DefaultListModel();
 
-    // Constructor.
+    // Constructor for the frame that will allow users to enter data
     public NewFrame (int width, int height)
     {
-        this.setTitle ("A&M");
+        this.setTitle ("Song Editor");
         this.setResizable (true);
         this.setSize (width, height);
 
@@ -88,8 +89,9 @@ public class NewFrame extends JFrame {
         centerpanel.add ( albumName() );
         centerpanel.add ( artistName() );
         centerpanel.add ( songName() );
-        centerpanel.add ( address () );
-              centerpanel.add ( addressB () );
+        centerpanel.add ( address() );
+        centerpanel.add ( addressB() );
+
 
 
         sc = new JScrollPane (centerpanel);
@@ -104,10 +106,11 @@ public class NewFrame extends JFrame {
         this.setVisible (true);
     }
 
-
-    public NewFrame (){
+//This is the playlist. will actually display the images, etc.
+    public NewFrame (NewFrame userInput){
 
     /// ADD IMAGE
+
 
       NewClass imageViewer;
       imageViewer = new NewClass();
@@ -156,12 +159,7 @@ public class NewFrame extends JFrame {
 
         subpanel.add (playnext);
   	    subpanel.add (playrandom);
-
-	      JLabel L2 = new JLabel ("List of songs that you have imported");
-	      L2.setFont (new Font ("Lucida Grande", Font.PLAIN, 12));
-        L2.setHorizontalAlignment(SwingConstants.CENTER);
-
-	      subpanel.add (L2);
+        //subpanel.add(userInput.playlistDisplay());
 
       	// Create a JList with options.
       	String[] songs1 = new String[10];
@@ -174,7 +172,6 @@ public class NewFrame extends JFrame {
              songs1[i] = nextSong.toString();
              System.out.println(songs1[i]);
              i++;
-
           }*/
 
 
@@ -297,7 +294,6 @@ public class NewFrame extends JFrame {
 
               Song newSong = new Song (artistName, songName, albumName, address, addressB);
               Playlist.add(newSong);
-              listModel.addElement(newSong.toString());
               System.out.println(Playlist.toString());
 		         }
 	         }
@@ -333,11 +329,36 @@ public class NewFrame extends JFrame {
           	    }
                   );
       actionMenu.add (quitMenuItem);
-      return actionMenu;
-    }
 
-    void submit ()
-    {
-      	System.out.println ("Load playlist");
-    }
+
+    JMenuItem displayMenuItem = new JMenuItem ("Display Playlist");
+    displayMenuItem.addActionListener (
+      new ActionListener () {
+            public void actionPerformed (ActionEvent a)
+            {
+              System.out.println(Playlist.toString());
+              NewFrame display = new NewFrame(Playlist);
+            }
+              }
+                );
+    actionMenu.add (displayMenuItem);
+    return actionMenu;
+  }
+  public NewFrame (LinkedList Playlist){
+    System.out.println(Playlist.toString());
+    this.setTitle ("Playlist");
+    this.setResizable (true);
+    this.setSize (300, 300);
+
+    Container cPane = this.getContentPane();
+    JLabel L = new JLabel ("Playlist: ");
+    L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 24));
+    cPane.add(L, BorderLayout.NORTH);
+
+    JLabel PlaylistText = new JLabel(Playlist.toString());
+    System.out.println(Playlist.toString());
+
+    cPane.add(PlaylistText, BorderLayout.CENTER);
+    this.setVisible (true);
+  }
 }

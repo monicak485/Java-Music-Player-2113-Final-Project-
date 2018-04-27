@@ -1,8 +1,13 @@
+import	jm.JMC;
+import	jm.music.data.*;
+import	jm.util.Play;
+
 public class AM_musicplayer {
     public static void main (String[] argv)
     {
-	     NewFrame nf = new NewFrame (700, 250);
-        NewFrame wf = new NewFrame ();
 
+       NewFrame SongEditor = new NewFrame (700, 250);
+       NewFrame MusicPlayer= new NewFrame (SongEditor);
+       //MusicPlayer.playlistDisplay(); 
     }
 }
