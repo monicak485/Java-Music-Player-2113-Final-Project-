@@ -18,6 +18,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
 import java.util.LinkedList.*;
+import	jm.JMC;
+import	jm.music.data.*;
+import	jm.util.Play;
 
 
 
@@ -307,7 +310,7 @@ public class NewFrame extends JFrame {
 
       Song newSong = new Song (artistName, songName, albumName, address, addressB);
       Playlist.add(newSong);
-      System.out.println(newSong.toString()); 
+      System.out.println(Playlist.toString());
 		}
 	    }
         );
