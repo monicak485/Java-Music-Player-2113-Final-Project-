@@ -7,7 +7,7 @@ import jm.util.Read;
 import jm.util.Write;
 
 
-public class Song{
+public class Song extends Object{
   String artistName;
   String songName;
   String albumName;
@@ -34,7 +34,7 @@ public class Song{
     return output;
   }
   public void Play(){
-    System.out.println("Now Playing: " + songName); 
+    System.out.println("Now Playing: " + songName);
     /*Write.audio(songData, "myMix.wav",2,44100,16);
     Play.au("myMix.wav");*/
   }

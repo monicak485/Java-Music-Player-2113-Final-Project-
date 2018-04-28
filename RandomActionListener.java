@@ -10,6 +10,7 @@ public class RandomActionListener implements ActionListener {
     int listSize;
     int randomIndex;
     LinkedList<Song> mixtape;
+    Song[] listArray;
 
     public RandomActionListener(int listSize, LinkedList<Song> mixtape) {
         this.listSize = listSize;
@@ -18,8 +19,8 @@ public class RandomActionListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-      Object[] listArray = mixtape.toArray();
+      listArray = mixtape.toArray(new Song[listSize]);
       randomIndex = new Random().nextInt(listSize);
-      System.out.println(listArray[randomIndex]);
+      listArray[randomIndex].Play(); 
     }
   }

@@ -9,6 +9,7 @@ public class SongActionListener implements ActionListener {
     int listSize;
     int index;
     LinkedList<Song> mixtape;
+    Song[] listArray;
 
     public SongActionListener(int listSize, LinkedList<Song> mixtape, int index) {
         this.listSize = listSize;
@@ -21,8 +22,9 @@ public class SongActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       if (index < listSize){
         //System.out.println("Size " + listSize);
-        Object[] listArray = mixtape.toArray();
-        System.out.println(listArray[index]);
+        listArray = mixtape.toArray(new Song[listSize]);
+        //System.out.println(listArray[index]);
+        listArray[index].Play(); 
         index++;
       }
       else
