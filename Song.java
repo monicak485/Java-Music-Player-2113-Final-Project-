@@ -1,13 +1,13 @@
 import java.util.*;
 import java.util.LinkedList.*;
-import	jm.JMC;
-import	jm.music.data.*;
-import	jm.util.Play;
+import jm.JMC;
+import jm.music.data.*;
+import jm.util.Play;
 import jm.util.Read;
 import jm.util.Write;
 
 
-public class Song extends Object{
+public class Song{
   String artistName;
   String songName;
   String albumName;
@@ -30,39 +30,12 @@ public class Song extends Object{
 
   }
   public String toString(){
-    String output = "Artist : " + artistName + " Song: " + songName + " Album: " + albumName;
+    String output = "Artist : " + artistName + " Song: " + songName + " Album: " + albumName + "\n";
     return output;
   }
-/*  public void play(LinkedList Playlist)
-	{
-		Object counter = new Song();
-    counter = Playlist.getFirst(); //finds the head
-		int playlistLength = 0;
-		while (counter != null)
-		{
-			playlistLength += counter.songData.length;
-			counter = counter.next;
-		}
-
-		float[] hugeArray = new float[playlistLength];
-
-		counter = Playlist.getFirst();
-		int count = 0;
-		while (counter != null)
-		{
-			for (int i = 0; i < counter.songData.length; i++)
-			{
-				hugeArray[count] = counter.songData[i];
-				count++;
-			}
-			counter = counter.next;
-		}
-		counter = Playlist.getFirst();
-		while (counter != null)
-		{
-			Write.audio(hugeArray, "myMix.wav",2,44100,16);
-			Play.au("myMix.wav");
-			counter = counter.next;
-		}
-	}*/
+  public void Play(){
+    System.out.println("Now Playing: " + songName); 
+    /*Write.audio(songData, "myMix.wav",2,44100,16);
+    Play.au("myMix.wav");*/
+  }
 }

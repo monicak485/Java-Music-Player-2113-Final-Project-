@@ -54,7 +54,8 @@ public class NewFrame extends JFrame {
     JTextField tf;
     boolean q2Option4;
 
-    LinkedList<Song> Playlist = new LinkedList<Song>();
+    LinkedList mixtape = new LinkedList();
+    int listSize, index;
     DefaultListModel listModel = new DefaultListModel();
 
 
@@ -102,11 +103,12 @@ public class NewFrame extends JFrame {
         this.setVisible (true);
     }
 
-//This is the playlist. will actually display the images, etc.
-    public NewFrame (){
+//This is the LinkedList. will actually display the images, etc.
+    public NewFrame (int listSize, LinkedList mixtape){
 
     /// ADD IMAGE
 
+      System.out.println("Size: "+ listSize);
 
       NewClass imageViewer;
       imageViewer = new NewClass();
@@ -135,16 +137,12 @@ public class NewFrame extends JFrame {
       cPane.add(BorderLayout.SOUTH, area);
 
 
+      System.out.println("Size: " + listSize);
       JButton playnext = new JButton ("Play next song ");
       playnext.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
-      playnext.addActionListener (
-        new ActionListener () {
-        		public void actionPerformed (ActionEvent a)
-        		{
-              //Needs to actually play the song- will call Song.play method here
-        		}
-	       }
-	     );
+        playnext.addActionListener (
+        new SongActionListener (listSize, mixtape, index) );
+
 
       JButton playrandom = new JButton ("Play random song ");
 	    playrandom.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
@@ -161,35 +159,9 @@ public class NewFrame extends JFrame {
       	JPanel subpanel = new JPanel ();
       	subpanel.setLayout (new GridLayout (4,1));
         subpanel.add(area);
-        subpanel.add (playnext);
-  	    subpanel.add (playrandom);
-        //subpanel.add(userInput.playlistDisplay());
+        subpanel.add(playnext);
+  	    subpanel.add(playrandom);
 
-      	// Create a JList with options.
-      	String[] songs1 = new String[10];
-        /*int i = 0;
-        ListIterator<Song> listIt = Playlist.listIterator();
-          // Iterating the list
-          while(listIt.hasNext()){
-             //System.out.println(listIt.next());
-             Song nextSong = listIt.next();
-             songs1[i] = nextSong.toString();
-             System.out.println(songs1[i]);
-             i++;
-          }*/
-
-
-      	q4List = new JList(listModel);
-      	q4Score = 1;
-      	q4List.addListSelectionListener (
-          new ListSelectionListener () {
-        		public void valueChanged (ListSelectionEvent e)
-        		{
-        		    q4Score = 1 + q4List.getSelectedIndex();
-        		}
-        	}
-        );
-        subpanel.add (q4List);
 	      cPane.add (subpanel, BorderLayout.SOUTH);
         subpanel.setBackground(new java.awt.Color(0,204,204));
 
@@ -297,8 +269,10 @@ public class NewFrame extends JFrame {
               addressCoverArt = addressTextB.getText();
 
               Song newSong = new Song (artistName, songName, albumName, address, addressCoverArt);
-              Playlist.add(newSong);
-              System.out.println(Playlist.toString());
+              mixtape.add(newSong);
+              System.out.println(mixtape.toString());
+              listSize = mixtape.size();
+              System.out.println("Size: " + listSize);
 		         }
 	         }
         );
@@ -340,30 +314,13 @@ public class NewFrame extends JFrame {
       new ActionListener () {
             public void actionPerformed (ActionEvent a)
             {
-              System.out.println(Playlist.toString());
-              NewFrame display = new NewFrame();
-              display.area.setText(Playlist.toString());
+              System.out.println(mixtape.toString());
+              NewFrame display = new NewFrame(mixtape.size(), mixtape);
+              display.area.setText(mixtape.toString());
             }
               }
                 );
     actionMenu.add (displayMenuItem);
     return actionMenu;
   }
-  /*public NewFrame (LinkedList Playlist){
-    System.out.println(Playlist.toString());
-    this.setTitle ("Playlist");
-    this.setResizable (true);
-    this.setSize (300, 300);
-
-    Container cPane = this.getContentPane();
-    JLabel L = new JLabel ("Playlist: ");
-    L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 24));
-    cPane.add(L, BorderLayout.NORTH);
-
-    JLabel PlaylistText = new JLabel(Playlist.toString() + "\n");
-    System.out.println(Playlist.toString());
-
-    cPane.add(PlaylistText, BorderLayout.CENTER);
-    this.setVisible (true);
-  }*/
 }
