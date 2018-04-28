@@ -19,9 +19,13 @@ public class SongActionListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-      System.out.println("Size " + listSize);
-      Object[] listArray = mixtape.toArray();
-      System.out.println(listArray[index]);
-      index++; 
+      if (index < listSize){
+        System.out.println("Size " + listSize);
+        Object[] listArray = mixtape.toArray();
+        System.out.println(listArray[index]);
+        index++;
       }
+      else 
+        System.out.println("End of List Reached");
     }
+  }
