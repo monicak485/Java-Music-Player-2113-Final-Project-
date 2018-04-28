@@ -7,6 +7,9 @@
 
 import javax.swing.*;
 import java.awt.*;
+import	jm.JMC;
+import	jm.music.data.*;
+import	jm.util.Play;
 
 public class NewClass extends JPanel {
     public void paintComponent(Graphics g){
@@ -14,5 +17,4 @@ public class NewClass extends JPanel {
         g.drawImage(pic, 0, 0, this);
 
     }
-
 }

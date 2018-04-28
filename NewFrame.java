@@ -108,7 +108,7 @@ public class NewFrame extends JFrame {
 
     /// ADD IMAGE
 
-      System.out.println("Size: "+ listSize);
+      //System.out.println("Size: "+ listSize);
 
       NewClass imageViewer;
       imageViewer = new NewClass();
@@ -147,11 +147,7 @@ public class NewFrame extends JFrame {
       JButton playrandom = new JButton ("Play random song ");
 	    playrandom.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
 	    playrandom.addActionListener (
-	     new ActionListener () {
-		       public void actionPerformed (ActionEvent a)
-		       {
-             //Again, will call playlist.playRandom method
-		       }
+	     new RandomActionListener (listSize, mixtape) {
 	     }
 	    );
 
