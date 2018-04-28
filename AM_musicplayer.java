@@ -7,7 +7,7 @@ public class AM_musicplayer {
     {
 
        NewFrame SongEditor = new NewFrame (700, 250);
-       NewFrame MusicPlayer= new NewFrame (SongEditor);
-       //MusicPlayer.playlistDisplay(); 
+       NewFrame MusicPlayer= new NewFrame ();
+       //MusicPlayer.playlistDisplay();
     }
 }

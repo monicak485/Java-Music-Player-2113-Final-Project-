@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 //package a.m_musicplayer;
 
 /*
@@ -39,7 +34,7 @@ public class NewFrame extends JFrame {
     JTextField addressTextA = new JTextField(10);     // To get the filename song name.
     String address;
     JTextField addressTextB = new JTextField(10);     // Address (TextArea)
-    String addressB;
+    String addressCoverArt;
     JMenuBar mb;                // The menubar.
     JButton jButton1;
     JButton jButton2;
@@ -49,7 +44,7 @@ public class NewFrame extends JFrame {
     JTextField text;
     JTextArea area;
     JButton button;
-     Image img;
+    Image img;
 
     JList q4List;
     double q4Score = 0;
@@ -61,6 +56,7 @@ public class NewFrame extends JFrame {
 
     LinkedList<Song> Playlist = new LinkedList<Song>();
     DefaultListModel listModel = new DefaultListModel();
+
 
     // Constructor for the frame that will allow users to enter data
     public NewFrame (int width, int height)
@@ -75,7 +71,7 @@ public class NewFrame extends JFrame {
         // First, a welcome message:
         JLabel L = new JLabel ("Add songs to MAG music player");
         L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 24));
-        //L.setForeground (Color.pink);
+
         cPane.setBackground(new java.awt.Color(0,204,204));
 
         L.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,7 +86,7 @@ public class NewFrame extends JFrame {
         centerpanel.add ( artistName() );
         centerpanel.add ( songName() );
         centerpanel.add ( address() );
-        centerpanel.add ( addressB() );
+        centerpanel.add ( addressCoverArt() );
 
 
 
@@ -107,7 +103,7 @@ public class NewFrame extends JFrame {
     }
 
 //This is the playlist. will actually display the images, etc.
-    public NewFrame (NewFrame userInput){
+    public NewFrame (){
 
     /// ADD IMAGE
 
@@ -126,12 +122,18 @@ public class NewFrame extends JFrame {
       JLabel L = new JLabel ("Playlist");
       L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 25));
 
+      JPanel upPanel = new JPanel ();
+    	upPanel.setLayout (new GridLayout (2,1));
 
       L.setHorizontalAlignment(SwingConstants.CENTER);
-	    cPane.add (L, BorderLayout.NORTH);
-      this.setVisible (true);
+      upPanel.add (L);
+      upPanel.add(imageViewer);
+	    cPane.add (upPanel, BorderLayout.CENTER);
+      upPanel.setBackground(new java.awt.Color(0,204,204));
 
-      cPane.add(BorderLayout.CENTER, imageViewer);
+      area = new JTextArea();
+      cPane.add(BorderLayout.SOUTH, area);
+
 
       JButton playnext = new JButton ("Play next song ");
       playnext.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
@@ -139,6 +141,7 @@ public class NewFrame extends JFrame {
         new ActionListener () {
         		public void actionPerformed (ActionEvent a)
         		{
+              //Needs to actually play the song- will call Song.play method here
         		}
 	       }
 	     );
@@ -149,6 +152,7 @@ public class NewFrame extends JFrame {
 	     new ActionListener () {
 		       public void actionPerformed (ActionEvent a)
 		       {
+             //Again, will call playlist.playRandom method
 		       }
 	     }
 	    );
@@ -156,7 +160,7 @@ public class NewFrame extends JFrame {
       {
       	JPanel subpanel = new JPanel ();
       	subpanel.setLayout (new GridLayout (4,1));
-
+        subpanel.add(area);
         subpanel.add (playnext);
   	    subpanel.add (playrandom);
         //subpanel.add(userInput.playlistDisplay());
@@ -206,7 +210,7 @@ public class NewFrame extends JFrame {
       	JPanel subpanel = new JPanel ();
 
       	// a label before the textfield.
-      	JLabel L = new JLabel ("Artist Name:");
+      	JLabel L = new JLabel ("Album Name:");
       	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
       	subpanel.add (L);
 
@@ -221,7 +225,7 @@ public class NewFrame extends JFrame {
 	     JPanel subpanel = new JPanel ();
 
     	// The "Album name" label.
-    	JLabel L = new JLabel ("Album Name:");
+    	JLabel L = new JLabel ("Artist Name:");
     	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
     	subpanel.add (L);
 
@@ -260,7 +264,7 @@ public class NewFrame extends JFrame {
     	return subpanel;
     }
 
-    JPanel addressB ()
+    JPanel addressCoverArt ()
     {
       	JPanel subpanel = new JPanel ();
 
@@ -290,9 +294,9 @@ public class NewFrame extends JFrame {
               artistName = artistNameText.getText();
               songName = songNameText.getText();
               address = addressTextA.getText();
-              addressB = addressTextB.getText();
+              addressCoverArt = addressTextB.getText();
 
-              Song newSong = new Song (artistName, songName, albumName, address, addressB);
+              Song newSong = new Song (artistName, songName, albumName, address, addressCoverArt);
               Playlist.add(newSong);
               System.out.println(Playlist.toString());
 		         }
@@ -312,7 +316,7 @@ public class NewFrame extends JFrame {
           		    albumName = "";  albumNameText.setText (albumName);
           		    songName = "";  songNameText.setText (songName);
           		    address = "";  addressTextA.setText (address);
-                              addressB = "";  addressTextB.setText (addressB);
+                  addressCoverArt = "";  addressTextB.setText (addressCoverArt);
 
           		}
           }
@@ -337,14 +341,15 @@ public class NewFrame extends JFrame {
             public void actionPerformed (ActionEvent a)
             {
               System.out.println(Playlist.toString());
-              NewFrame display = new NewFrame(Playlist);
+              NewFrame display = new NewFrame();
+              display.area.setText(Playlist.toString());
             }
               }
                 );
     actionMenu.add (displayMenuItem);
     return actionMenu;
   }
-  public NewFrame (LinkedList Playlist){
+  /*public NewFrame (LinkedList Playlist){
     System.out.println(Playlist.toString());
     this.setTitle ("Playlist");
     this.setResizable (true);
@@ -355,10 +360,10 @@ public class NewFrame extends JFrame {
     L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 24));
     cPane.add(L, BorderLayout.NORTH);
 
-    JLabel PlaylistText = new JLabel(Playlist.toString());
+    JLabel PlaylistText = new JLabel(Playlist.toString() + "\n");
     System.out.println(Playlist.toString());
 
     cPane.add(PlaylistText, BorderLayout.CENTER);
     this.setVisible (true);
-  }
+  }*/
 }
