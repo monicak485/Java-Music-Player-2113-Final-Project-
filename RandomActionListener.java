@@ -21,6 +21,7 @@ public class RandomActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       listArray = mixtape.toArray(new Song[listSize]);
       randomIndex = new Random().nextInt(listSize);
-      listArray[randomIndex].Play(); 
+      NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[randomIndex]);
+      listArray[randomIndex].Play();
     }
   }

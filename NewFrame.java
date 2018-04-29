@@ -266,9 +266,10 @@ public class NewFrame extends JFrame {
 
               Song newSong = new Song (artistName, songName, albumName, address, addressCoverArt);
               mixtape.add(newSong);
-              System.out.println(mixtape.toString());
+              System.out.println("Successfully added: " + newSong.toString()); 
+              //System.out.println(mixtape.toString());
               listSize = mixtape.size();
-              System.out.println("Size: " + listSize);
+              //System.out.println("Size: " + listSize);
 		         }
 	         }
         );

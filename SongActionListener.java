@@ -16,7 +16,7 @@ public class SongActionListener implements ActionListener {
         this.mixtape = mixtape;
         index = 0;
         this.index = index;
-        System.out.println("Size: " + listSize);
+        //System.out.println("Size: " + listSize);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -24,7 +24,8 @@ public class SongActionListener implements ActionListener {
         //System.out.println("Size " + listSize);
         listArray = mixtape.toArray(new Song[listSize]);
         //System.out.println(listArray[index]);
-        listArray[index].Play(); 
+        NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[index]);
+        listArray[index].Play();
         index++;
       }
       else
