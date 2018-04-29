@@ -13,10 +13,15 @@ import java.util.ListIterator;
 
 public class NowPlayingFrame extends JFrame {
 
-  NowPlayingFrame(Song songPlaying){
+  NowPlayingFrame(Song songPlaying, String coverArtFile){
     this.setTitle ("Now Playing");
     this.setResizable (true);
     this.setSize (300, 300);
+
+    NewImage imageViewer;
+    imageViewer = new NewImage(coverArtFile);
+    imageViewer.setSize(700, 700);
+
 
     Container cPane = this.getContentPane();
     JLabel L = new JLabel ("Now Playing");
@@ -25,10 +30,11 @@ public class NowPlayingFrame extends JFrame {
     cPane.setBackground(new java.awt.Color(0,204,204));
 
     cPane.add (L, BorderLayout.NORTH);
+    cPane.add (imageViewer, BorderLayout.CENTER);
 
     JTextArea songText = new JTextArea();
     songText.setText(songPlaying.toString());
-    cPane.add(songText, BorderLayout.CENTER); 
+    cPane.add(songText, BorderLayout.SOUTH);
 
     this.setVisible (true);
   }

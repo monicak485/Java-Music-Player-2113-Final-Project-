@@ -24,7 +24,7 @@ public class SongActionListener implements ActionListener {
         //System.out.println("Size " + listSize);
         listArray = mixtape.toArray(new Song[listSize]);
         //System.out.println(listArray[index]);
-        NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[index]);
+        NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[index], listArray[index].coverArtFile);
         listArray[index].Play();
         index++;
       }

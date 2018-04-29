@@ -103,9 +103,7 @@ public class NewFrame extends JFrame {
 
       //System.out.println("Size: "+ listSize);
 
-      NewImage imageViewer;
-      imageViewer = new NewImage();
-      imageViewer.setSize(700, 700);
+
 
       this.setTitle ("Playlist");
       this.setResizable (true);
@@ -122,7 +120,7 @@ public class NewFrame extends JFrame {
 
       L.setHorizontalAlignment(SwingConstants.CENTER);
       upPanel.add (L);
-      upPanel.add(imageViewer);
+      //upPanel.add(imageViewer);
 	    cPane.add (upPanel, BorderLayout.CENTER);
       upPanel.setBackground(new java.awt.Color(0,204,204));
 
@@ -150,6 +148,7 @@ public class NewFrame extends JFrame {
         subpanel.add(area);
         subpanel.add(playnext);
   	    subpanel.add(playrandom);
+
 
 	      cPane.add (subpanel, BorderLayout.SOUTH);
         subpanel.setBackground(new java.awt.Color(0,204,204));
@@ -305,6 +304,7 @@ public class NewFrame extends JFrame {
             public void actionPerformed (ActionEvent a)
             {
               System.out.println(mixtape.toString());
+              System.out.println(addressCoverArt);
               NewFrame display = new NewFrame(mixtape.size(), mixtape);
               display.area.setText(mixtape.toString());
             }
