@@ -26,6 +26,12 @@ class Server {
 
                 System.out.println("data: "+ new String(data).trim());
 
+                InetAddress address = dp.address();
+                int port = dp.getPort();
+                dp = new DatagramPacket(buffer, buffer.length, address, port);
+
+                ds.send(dp);
+
                 //DatagramPacket dptest = new DatagramPacket(buffer, buffer.length, InetAddress.getLocalHost(), 10000);
                 //dssend.send(dptest);
                 /*

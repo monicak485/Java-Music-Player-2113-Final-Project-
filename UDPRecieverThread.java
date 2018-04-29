@@ -3,9 +3,13 @@ import java.io.*;
 import java.net.*;
 
 class UDPRecieverThread implements Runnable {
+  Song details;
+  public void UDPReceiverThread2(Song details){
+    this.details = details;
+  }
   public void run(){ //throws IOException
     try {
-      DatagramSocket ds = new DatagramSocket(10000);
+      DatagramSocket ds = new DatagramSocket(10001);
       while (true){
 
             // prepare the buffer to hold the received data
