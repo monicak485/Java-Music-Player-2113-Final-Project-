@@ -14,6 +14,6 @@ start the user input of songs. */
 public class AM_musicplayer {
     public static void main (String[] argv)
     {
-       NewFrame SongEditor = new NewFrame (700, 250);
+      NewFrame SongEditor = new NewFrame (750, 250);
     }
 }

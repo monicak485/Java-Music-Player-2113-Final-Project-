@@ -20,6 +20,7 @@ import java.awt.*;
 needs as variables in the class,
 and its methods allow it to be printed and played*/
 public class Song extends JPanel{
+  String username;
   String artistName;
   String songName;
   String albumName;
@@ -31,7 +32,8 @@ public class Song extends JPanel{
 	Song prev;
 
 //Standard constructor
-  public Song (String artistName, String songName, String albumName, String fileName, String coverArtFile){
+  public Song (String username, String artistName, String songName, String albumName, String fileName, String coverArtFile){
+   this.username = username;
    this.artistName = artistName;
    this.songName = songName;
    this.albumName = albumName;
@@ -43,7 +45,7 @@ public class Song extends JPanel{
 
 //toString method
   public String toString(){
-    String output = songName + " by " + artistName +" from album " + albumName + "\n";
+    String output = username + " is playing " + songName + " by " + artistName +" from album " + albumName + "\n";
     return output;
   }
   //Play method

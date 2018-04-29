@@ -35,6 +35,8 @@ public class NewFrame extends JFrame {
     String address;
     JTextField addressTextB = new JTextField(10);     // Address (TextArea)
     String addressCoverArt;
+    JTextField usernameText = new JTextField(10);     // Address (TextArea)
+    String username;
     JMenuBar mb;                // The menubar.
     JButton jButton1;
     JButton jButton2;
@@ -76,6 +78,7 @@ public class NewFrame extends JFrame {
         centerpanel.setLayout (new GridLayout (4,1));
 
         // Each widget is created in a separate method.
+        centerpanel.add ( username() );
         centerpanel.add ( albumName() );
         centerpanel.add ( artistName() );
         centerpanel.add ( songName() );
@@ -99,12 +102,6 @@ public class NewFrame extends JFrame {
 //This is the LinkedList. will actually display the images, etc.
     public NewFrame (int listSize, LinkedList mixtape){
 
-    /// ADD IMAGE
-
-      //System.out.println("Size: "+ listSize);
-
-
-
       this.setTitle ("Playlist");
       this.setResizable (true);
       this.setSize (300, 800);
@@ -120,7 +117,6 @@ public class NewFrame extends JFrame {
 
       L.setHorizontalAlignment(SwingConstants.CENTER);
       upPanel.add (L);
-      //upPanel.add(imageViewer);
 	    cPane.add (upPanel, BorderLayout.CENTER);
       upPanel.setBackground(new java.awt.Color(0,204,204));
 
@@ -164,6 +160,20 @@ public class NewFrame extends JFrame {
 
     ////////////////////////////////
 
+    JPanel username ()
+    {
+      	JPanel subpanel = new JPanel ();
+
+      	// a label before the textfield.
+      	JLabel L = new JLabel ("Username:");
+      	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
+      	subpanel.add (L);
+
+      	albumNameText.setForeground (Color.blue);
+      	subpanel.add (usernameText);
+        String username = usernameText.getText();
+      	return subpanel;
+    }
 
     JPanel albumName ()
     {
@@ -250,13 +260,14 @@ public class NewFrame extends JFrame {
     	    new ActionListener () {
             public void actionPerformed (ActionEvent a)
         		{
+              username = usernameText.getText();
               albumName = albumNameText.getText();
               artistName = artistNameText.getText();
               songName = songNameText.getText();
               address = addressTextA.getText();
               addressCoverArt = addressTextB.getText();
 
-              Song newSong = new Song (artistName, songName, albumName, address, addressCoverArt);
+              Song newSong = new Song (username, artistName, songName, albumName, address, addressCoverArt);
               mixtape.add(newSong);
               System.out.println("Successfully added: " + newSong.toString());
               //System.out.println(mixtape.toString());

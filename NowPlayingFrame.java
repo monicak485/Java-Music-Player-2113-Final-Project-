@@ -51,4 +51,14 @@ public class NowPlayingFrame extends JFrame {
     this.setVisible (true);
     songPlaying.Play();
   }
+  public void runThread(){
+    UDPSenderThread2 mythread = new UDPSenderThread2();
+    UDPRecieverThread mythread2 = new UDPRecieverThread();
+
+    Thread thread = new Thread(mythread);
+    Thread thread3 = new Thread(mythread2);
+
+    thread.start();
+    thread3.start();
+  }
 }
