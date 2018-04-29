@@ -24,18 +24,18 @@ public class Song extends Object{
    this.albumName = albumName;
    this.fileName = fileName;
    this.coverArtFile = coverArtFile;
-   //this.songData = Read.audio(fileName);
+   this.songData = Read.audio(fileName);
   }
   public Song(){
 
   }
   public String toString(){
-    String output = "Artist : " + artistName + " Song: " + songName + " Album: " + albumName + "\n";
+    String output = "Now Playing: " + songName + " by " + artistName +" from album " + albumName + "\n";
     return output;
   }
   public void Play(){
-    System.out.println("Now Playing: " + songName);
-    /*Write.audio(songData, "myMix.wav",2,44100,16);
-    Play.au("myMix.wav");*/
+    System.out.println("Now Playing: " + songName + " by " + artistName +" from album " +albumName);
+    Write.audio(songData, "myMix.wav",2,44100,16);
+    Play.au("myMix.wav");
   }
 }

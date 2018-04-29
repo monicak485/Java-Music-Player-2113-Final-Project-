@@ -46,13 +46,6 @@ public class NewFrame extends JFrame {
     JButton button;
     Image img;
 
-    JList q4List;
-    double q4Score = 0;
-    JPanel centerpanel1;
-    CardLayout card;
-
-    JTextField tf;
-    boolean q2Option4;
 
     LinkedList mixtape = new LinkedList();
     int listSize, index;
@@ -110,9 +103,9 @@ public class NewFrame extends JFrame {
 
       //System.out.println("Size: "+ listSize);
 
-      NewClass imageViewer;
-      imageViewer = new NewClass();
-      imageViewer.setSize(149, 337);
+      NewImage imageViewer;
+      imageViewer = new NewImage();
+      imageViewer.setSize(700, 700);
 
       this.setTitle ("Playlist");
       this.setResizable (true);
@@ -266,7 +259,7 @@ public class NewFrame extends JFrame {
 
               Song newSong = new Song (artistName, songName, albumName, address, addressCoverArt);
               mixtape.add(newSong);
-              System.out.println("Successfully added: " + newSong.toString()); 
+              System.out.println("Successfully added: " + newSong.toString());
               //System.out.println(mixtape.toString());
               listSize = mixtape.size();
               //System.out.println("Size: " + listSize);
