@@ -1,3 +1,11 @@
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,16 +18,19 @@ import jm.util.Play;
 import java.util.ListIterator;
 
 
-
+/*Now Playing Frame- this frame pops up whenever the user starts to play a song*/
 public class NowPlayingFrame extends JFrame {
 
+  //Constructor for the frame, it takes in the song(&its details)
   NowPlayingFrame(Song songPlaying, String coverArtFile){
+    //Basic Details of the Frame
     this.setTitle ("Now Playing");
     this.setResizable (true);
     this.setSize (300, 300);
 
+    //Creates an image viewer from the NewImage class
     NewImage imageViewer;
-    imageViewer = new NewImage(coverArtFile);
+    imageViewer = new NewImage(songPlaying.coverArtFile);
     imageViewer.setSize(700, 700);
 
 
@@ -34,8 +45,10 @@ public class NowPlayingFrame extends JFrame {
 
     JTextArea songText = new JTextArea();
     songText.setText(songPlaying.toString());
+    songText.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 14));
     cPane.add(songText, BorderLayout.SOUTH);
 
     this.setVisible (true);
+    songPlaying.Play();
   }
 }

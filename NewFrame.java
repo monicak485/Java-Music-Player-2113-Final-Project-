@@ -1,11 +1,11 @@
 //package a.m_musicplayer;
-
-/*
-Group Members: Abia Khan, Monica Kavathekar, Grace Gowanlock
-Sources: courtesy of Prof. Simha from Module 11 (CS 2113) and Module 6 (CS 1112)
- */
-
-//package form1;
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
 
 import java.awt.*;
 import java.awt.event.*;

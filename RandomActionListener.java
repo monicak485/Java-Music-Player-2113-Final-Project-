@@ -1,3 +1,10 @@
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
 import java.util.*;
 import java.util.LinkedList.*;
 import java.awt.*;

@@ -1,3 +1,11 @@
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
+
 import java.util.*;
 import java.util.LinkedList.*;
 import jm.JMC;
@@ -8,7 +16,9 @@ import jm.util.Write;
 import javax.swing.*;
 import java.awt.*;
 
-
+/*This is our song class. It contains all the information that a Song object
+needs as variables in the class,
+and its methods allow it to be printed and played*/
 public class Song extends JPanel{
   String artistName;
   String songName;
@@ -20,6 +30,7 @@ public class Song extends JPanel{
   Song next;
 	Song prev;
 
+//Standard constructor
   public Song (String artistName, String songName, String albumName, String fileName, String coverArtFile){
    this.artistName = artistName;
    this.songName = songName;
@@ -29,17 +40,16 @@ public class Song extends JPanel{
    this.coverArtFile = coverArtFile;
    this.songData = Read.audio(fileName);
   }
-  public Song(){
 
-  }
+//toString method
   public String toString(){
     String output = songName + " by " + artistName +" from album " + albumName + "\n";
     return output;
   }
+  //Play method
   public void Play(){
-    System.out.println("Now Playing: " + songName + " by " + artistName +" from album " +albumName);
-    //Write.audio(songData,"myMix.wav",2,44100,16);
-    //Play.au("myMix.wav");
-    //Play.stopMidi();
+    //System.out.println("Now Playing: " + songName + " by " + artistName +" from album " +albumName);
+    Write.audio(songData,"myMix.wav",2,44100,16);
+    Play.au("myMix.wav", false);
   }
 }

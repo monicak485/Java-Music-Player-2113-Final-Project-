@@ -1,3 +1,11 @@
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
+
 import java.util.*;
 import java.util.LinkedList.*;
 import java.awt.*;
@@ -25,7 +33,7 @@ public class SongActionListener implements ActionListener {
         listArray = mixtape.toArray(new Song[listSize]);
         //System.out.println(listArray[index]);
         NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[index], listArray[index].coverArtFile);
-        listArray[index].Play();
+        //listArray[index].Play();
         index++;
       }
       else

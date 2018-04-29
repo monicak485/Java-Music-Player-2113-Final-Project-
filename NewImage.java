@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
+
 //package a.m_musicplayer;
 
 import javax.swing.*;
@@ -12,7 +15,7 @@ import	jm.music.data.*;
 import	jm.util.Play;
 
 public class NewImage extends JPanel {
-    String coverArtFile; 
+    String coverArtFile;
     public NewImage(String coverArtFile){
       this.coverArtFile = coverArtFile;
     }
