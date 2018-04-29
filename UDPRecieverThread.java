@@ -9,7 +9,7 @@ class UDPRecieverThread implements Runnable {
   }
   public void run(){ //throws IOException
     try {
-      DatagramSocket ds = new DatagramSocket(10001);
+      DatagramSocket ds = new DatagramSocket(10000);
       while (true){
 
             // prepare the buffer to hold the received data
