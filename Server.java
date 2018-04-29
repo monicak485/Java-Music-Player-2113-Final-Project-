@@ -10,7 +10,7 @@ class Server {
     while (true){
       try {
         DatagramSocket ds = new DatagramSocket(10001);
-        DatagramSocket dssend = new DatagramSocket(10000);
+        DatagramSocket dssend = new DatagramSocket();
 
               byte[] buffer = new byte[1024];
               byte[] data = new byte[1024];
@@ -26,11 +26,11 @@ class Server {
 
                 System.out.println("data: "+ new String(data).trim());
 
-                InetAddress address = dp.address();
-                int port = dp.getPort();
-                dp = new DatagramPacket(buffer, buffer.length, address, port);
+                InetAddress address = dp.getAddress();
 
-                ds.send(dp);
+                dp = new DatagramPacket(buffer, buffer.length, address, 10000);
+
+                dssend.send(dp);
 
                 //DatagramPacket dptest = new DatagramPacket(buffer, buffer.length, InetAddress.getLocalHost(), 10000);
                 //dssend.send(dptest);
@@ -39,14 +39,7 @@ class Server {
                 System.out.println("sender port number: "+dp.getPort());
                 System.out.println("sender address: "+dp.getAddress().toString());
                 */
-                System.out.println(buffer);
 
-                DatagramPacket dptest = new DatagramPacket(buffer, buffer.length, InetAddress.getLocalHost(), 10000);
-                System.out.println("test2");
-
-                dssend.send(dptest);
-
-                System.out.println("test");
 
         //ds.close();
       } catch (IOException ex){
