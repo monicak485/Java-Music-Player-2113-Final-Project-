@@ -3,27 +3,29 @@ import java.io.*;
 import java.net.*;
 
 class UDPRecieverThread implements Runnable {
-  Song details;
-  public void UDPReceiverThread2(Song details){
-    this.details = details;
-  }
+
   public void run(){ //throws IOException
     try {
       DatagramSocket ds = new DatagramSocket(10000);
+
       while (true){
 
             // prepare the buffer to hold the received data
             byte[] buffer = new byte[1024];
+
             // create a new data packet based on the buffer
             DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
             // receive data packet
             ds.receive(dp);
-            System.out.println("test3");
+            //System.out.println("test3");
             // analyze the received data
             byte[] data = dp.getData();
 
+            ServerFrame newServerFrame = new ServerFrame(data);
 
-            System.out.println("data: "+ new String(data).trim());
+
+  //          System.out.println("data: "+ new String(data).trim());
+
 
             /*
             System.out.println("packet length: "+dp.getLength());

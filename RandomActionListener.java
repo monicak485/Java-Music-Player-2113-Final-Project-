@@ -30,6 +30,7 @@ public class RandomActionListener implements ActionListener {
       randomIndex = new Random().nextInt(listSize);
       listArray[randomIndex].toString();
       NowPlayingFrame nowPlaying = new NowPlayingFrame(listArray[randomIndex], listArray[randomIndex].coverArtFile);
-      listArray[randomIndex].Play();
+      nowPlaying.runThread(listArray[randomIndex]);
+      //listArray[randomIndex].Play();
     }
   }

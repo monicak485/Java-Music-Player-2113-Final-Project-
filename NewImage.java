@@ -19,6 +19,9 @@ public class NewImage extends JPanel {
     public NewImage(String coverArtFile){
       this.coverArtFile = coverArtFile;
     }
+    public NewImage(){
+      
+    }
     public void paintComponent(Graphics g){
         Image pic = new ImageIcon(coverArtFile, "cover").getImage();
         g.drawImage(pic, 0, 0, this);
