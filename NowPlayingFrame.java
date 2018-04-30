@@ -33,7 +33,7 @@ public class NowPlayingFrame extends JFrame {
     imageViewer = new NewImage(songPlaying.coverArtFile);
     imageViewer.setSize(700, 700);
 
-
+    //Container with basic labels, etc
     Container cPane = this.getContentPane();
     JLabel L = new JLabel ("Now Playing");
     L.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 24));
@@ -43,16 +43,20 @@ public class NowPlayingFrame extends JFrame {
     cPane.add (L, BorderLayout.NORTH);
     cPane.add (imageViewer, BorderLayout.CENTER);
 
+    //Text area to display the currently playing song 
     JTextArea songText = new JTextArea();
-    songText.setText(songPlaying.toString());
+    songText.setText(songPlaying.toString()); //calls the toString method of the Song object
     songText.setFont (new Font ("Lucida Grande", Font.BOLD | Font.ITALIC, 14));
     cPane.add(songText, BorderLayout.SOUTH);
 
     this.setVisible (true);
-    songPlaying.Play();
+    songPlaying.Play(); //Plays the song
   }
+  //Run thread method for server communication
   public void runThread(Song newSong){
+    //Boolean to stop infinite looping
     Boolean stopThisLoop = true; 
+    //creates thread classes & starts them
     UDPSenderThread2 mythread = new UDPSenderThread2(newSong, stopThisLoop);
     UDPRecieverThread mythread2 = new UDPRecieverThread();
 
