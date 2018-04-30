@@ -6,7 +6,6 @@ and Abia Khan
 Professor James
 4/29/18
 
-IM EDITING THIS
 ////////////////////////////////*/
 
 import java.awt.*;
@@ -51,13 +50,13 @@ public class NewFrame extends JFrame {
     Image img;
 
 
-    LinkedList mixtape = new LinkedList();
+    LinkedList mixtape = new LinkedList(); //mixtape linked list
     int listSize, index;
     DefaultListModel listModel = new DefaultListModel();
 
 
     // Constructor for the frame that will allow users to enter data
-    public NewFrame (int width, int height)
+    public NewFrame (int width, int height)  
     {
         this.setTitle ("Song Editor");
         this.setResizable (true);
@@ -72,6 +71,7 @@ public class NewFrame extends JFrame {
 
         cPane.setBackground(new java.awt.Color(0,204,204));
 
+	//align the text to the center
         L.setHorizontalAlignment(SwingConstants.CENTER);
         cPane.add (L, BorderLayout.NORTH);
 
@@ -88,7 +88,7 @@ public class NewFrame extends JFrame {
         centerpanel.add ( addressCoverArt() );
 
 
-
+	
         sc = new JScrollPane (centerpanel);
         cPane.add (sc, BorderLayout.CENTER);
 
@@ -101,7 +101,7 @@ public class NewFrame extends JFrame {
         this.setVisible (true);
     }
 
-//This is the LinkedList. will actually display the images, etc.
+  //This is the LinkedList. will actually display the images, etc.
     public NewFrame (int listSize, LinkedList mixtape){
 
       this.setTitle ("Playlist");
@@ -117,22 +117,24 @@ public class NewFrame extends JFrame {
       JPanel upPanel = new JPanel ();
     	upPanel.setLayout (new GridLayout (2,1));
 
+	    //align title text to the center
       L.setHorizontalAlignment(SwingConstants.CENTER);
       upPanel.add (L);
 	    cPane.add (upPanel, BorderLayout.CENTER);
       upPanel.setBackground(new java.awt.Color(0,204,204));
 
+	//area that displays the list of songs
       area = new JTextArea();
       cPane.add(BorderLayout.SOUTH, area);
 
-
+//add button and implement action listener for play next song
       System.out.println("Size: " + listSize);
       JButton playnext = new JButton ("Play next song ");
       playnext.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
         playnext.addActionListener (
         new SongActionListener (listSize, mixtape, index) );
 
-
+//add button and implement action listener for play random song
       JButton playrandom = new JButton ("Play random song ");
 	    playrandom.setFont (new Font ("Serif", Font.PLAIN | Font.BOLD, 15));
 	    playrandom.addActionListener (
@@ -141,6 +143,7 @@ public class NewFrame extends JFrame {
 	    );
 
       {
+	//add buttons to the panel
       	JPanel subpanel = new JPanel ();
       	subpanel.setLayout (new GridLayout (4,1));
         subpanel.add(area);
@@ -148,8 +151,11 @@ public class NewFrame extends JFrame {
   	    subpanel.add(playrandom);
 
 
+	      //add subpanel to the content pane
 	      cPane.add (subpanel, BorderLayout.SOUTH);
         subpanel.setBackground(new java.awt.Color(0,204,204));
+	      
+	      //add buttonPanel to the content pane
 
         JPanel buttonPanel = new JPanel ();
 	      buttonPanel.setLayout (new GridLayout (6,2));
@@ -164,13 +170,15 @@ public class NewFrame extends JFrame {
 
     JPanel username ()
     {
+	    //create new subpanel
       	JPanel subpanel = new JPanel ();
 
-      	// a label before the textfield.
+      	// a user label before the textfield.
       	JLabel L = new JLabel ("Username:");
       	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
       	subpanel.add (L);
 
+	 //gets the text the user entered for the username 
       	albumNameText.setForeground (Color.blue);
       	subpanel.add (usernameText);
         String username = usernameText.getText();
@@ -181,11 +189,12 @@ public class NewFrame extends JFrame {
     {
       	JPanel subpanel = new JPanel ();
 
-      	// a label before the textfield.
+      	// a album name label before the textfield.
       	JLabel L = new JLabel ("Album Name:");
       	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
       	subpanel.add (L);
 
+	 //gets the text the user entered for the album name
       	albumNameText.setForeground (Color.blue);
       	subpanel.add (albumNameText);
         String albumName = albumNameText.getText();
@@ -196,11 +205,12 @@ public class NewFrame extends JFrame {
     {
 	     JPanel subpanel = new JPanel ();
 
-    	// The "Album name" label.
+      	// a artist name label before the textfield.
     	JLabel L = new JLabel ("Artist Name:");
     	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
     	subpanel.add (L);
-
+	    
+	 //gets the text the user entered for the artist name
     	artistNameText.setForeground (Color.blue);
     	subpanel.add (artistNameText);
 
@@ -210,11 +220,13 @@ public class NewFrame extends JFrame {
     JPanel songName ()
     {
     	JPanel subpanel = new JPanel ();
-
+	    
+      	// a song title label before the songtitle.
     	JLabel L = new JLabel ("Song Title:");
     	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
     	subpanel.add (L);
-
+	    
+	 //gets the text the user entered for the songtitle
     	songNameText.setForeground (Color.blue);
     	subpanel.add (songNameText);
 
@@ -225,11 +237,12 @@ public class NewFrame extends JFrame {
     JPanel address ()
     {
     	JPanel subpanel = new JPanel ();
-
+      	// a song title label before the filename for song.
     	JLabel L = new JLabel ("Filename for Song:");
     	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
     	subpanel.add (L);
-
+	    
+	 //gets the text the user entered for the filename for song.
     	addressTextA.setForeground (Color.blue);
     	subpanel.add (addressTextA);
 
@@ -239,11 +252,12 @@ public class NewFrame extends JFrame {
     JPanel addressCoverArt ()
     {
       	JPanel subpanel = new JPanel ();
-
+      	// a song title label before the filename for album cover art
       	JLabel L = new JLabel ("Filename for album cover art:");
       	L.setFont (new Font ("SansSerif", Font.ITALIC, 15));
       	subpanel.add (L);
-
+	    
+	 //gets the text the user entered for the filename for album cover art
       	addressTextB.setForeground (Color.blue);
       	subpanel.add (addressTextB);
 
