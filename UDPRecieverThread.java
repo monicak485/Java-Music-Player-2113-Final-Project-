@@ -1,3 +1,10 @@
+/*////////////////////////////////
+Software Engineering Final Project
+Grace Gowanlock, Monica Kavathekar,
+and Abia Khan
+Professor James
+4/29/18
+////////////////////////////////*/
 import java.io.IOException;
 import java.io.*;
 import java.net.*;
@@ -6,7 +13,7 @@ class UDPRecieverThread implements Runnable {
 
   public void run(){ //throws IOException
     try {
-      DatagramSocket ds = new DatagramSocket(10000);
+      DatagramSocket ds = new DatagramSocket(10000); //prepares to recieve on this socket
 
       while (true){
 
@@ -17,21 +24,12 @@ class UDPRecieverThread implements Runnable {
             DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
             // receive data packet
             ds.receive(dp);
-            //System.out.println("test3");
+
             // analyze the received data
             byte[] data = dp.getData();
 
-            ServerFrame newServerFrame = new ServerFrame(data);
+            ServerFrame newServerFrame = new ServerFrame(data); //creates a new window with the song info that was recieved
 
-
-  //          System.out.println("data: "+ new String(data).trim());
-
-
-            /*
-            System.out.println("packet length: "+dp.getLength());
-            System.out.println("sender port number: "+dp.getPort());
-            System.out.println("sender address: "+dp.getAddress().toString());
-            */
 
         try {
           Thread.sleep(1);
@@ -39,7 +37,6 @@ class UDPRecieverThread implements Runnable {
 
         }
       }
-      //ds.close();
     } catch (IOException ex){
 
     }
